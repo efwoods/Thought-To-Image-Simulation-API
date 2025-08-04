@@ -1,8 +1,6 @@
 services:
   thought-to-image-simulation-api:
     container_name: thought-to-image-simulation-api
-    volumes:
-      - ${STIMULUS_IMAGES_DIR}:${STIMULUS_IMAGES_DIR}
     image: evdev3/thought-to-image-simulation-api:latest
     build:
       context: .

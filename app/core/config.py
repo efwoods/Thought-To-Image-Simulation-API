@@ -9,7 +9,6 @@ class Settings(BaseSettings):
     REDIS_HOST: str
     REDIS_PORT: int
     REDIS_PASSWORD: str
-    THOUGHT_TO_IMAGE_REDIS_KEY: str
 
     # Torch
     DEVICE: str = "cuda" if torch.cuda.is_available() else "cpu"
@@ -20,7 +19,6 @@ class Settings(BaseSettings):
     LATENT_DIM: int
 
     # Image -> Image_Latent -> Waveform -> Waveform_Latent
-    STIMULUS_IMAGES_DIR: str
     USE_PERCEPTUAL_LOSS: bool
     NORMALIZATION_CONFIG: str
     IMAGE_ENCODER_PATH: str

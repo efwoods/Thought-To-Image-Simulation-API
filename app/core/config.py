@@ -29,19 +29,15 @@ class Settings(BaseSettings):
     IMAGE_DICT_PATH: str
     TEST_METADATA_PATH: str
 
-    # GITHUB NGROK CONFIG
-    GITHUB_TOKEN: str
-    GITHUB_GIST_ID: str
-
-    NGROK_URL: Optional[str] = None
+    API_URL: str
 
     @property
-    def GIST_API_URL(self) -> str:
-        return f"https://api.github.com/gists/{self.GITHUB_GIST_ID}"
+    def HTTPS_ROOT_URI(self) -> str:
+        return "https://" + self.API_URL + "/thought-to-image-simulation-api"
 
     @property
-    def ROOT_URI(self) -> str:
-        return self.NGROK_URL + "/thought-to-image-simulation-api"
+    def WS_ROOT_URI(self) -> str:
+        return "wss://" + self.API_URL + "/thought-to-image-simulation-api"
 
     @property
     def RESIZE_DIM(self) -> tuple:

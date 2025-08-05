@@ -119,16 +119,25 @@ async def lifespan(app: FastAPI):
     # Webcam-to-Websocket
     print("[Startup] FastAPI simulation sender is live")
 
-    fetch_ngrok_url()
-    logger.info(f"ngrok_url set: {settings.NGROK_URL}")
+    # fetch_ngrok_url()
+    # logger.info(f"ngrok_url set: {settings.NGROK_URL}")
     # Relay-WS-Thought-to-image
     # Startup: initialize Whisper model
     load_dotenv()
+    # redis_client = Redis(
+    #     host=settings.REDIS_HOST,  # e.g. "localhost" or a container name like "redis"
+    #     port=settings.REDIS_PORT,  # usually 6379
+    #     password=settings.REDIS_PASSWORD,
+    #     decode_responses=True,  # Automatically decode UTF-8 strings
+    # )
+
     redis_client = Redis(
-        host=settings.REDIS_HOST,  # e.g. "localhost" or a container name like "redis"
-        port=settings.REDIS_PORT,  # usually 6379
+        host=settings.REDIS_HOST,
+        port=settings.REDIS_PORT,
+        username=settings.REDIS_USERNAME,
         password=settings.REDIS_PASSWORD,
-        decode_responses=True,  # Automatically decode UTF-8 strings
+        decode_responses=True,
+        ssl=True,  # if your connection uses TLS (check if the URL starts with rediss://)
     )
 
     app.state.redis = redis_client  # make available globally

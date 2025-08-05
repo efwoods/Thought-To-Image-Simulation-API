@@ -103,14 +103,14 @@ async def process_thought_to_image(payload: SimulationRequest):
         },
     }
     logger.info(
-        f"settings.ROOT_URI + /simulate/ws/simulate-image-to-waveform-latent: {settings.ROOT_URI}"
+        f"settings.HTTPS_ROOT_URI + /simulate/ws/simulate-image-to-waveform-latent: {settings.HTTPS_ROOT_URI}"
         + "/simulate/ws/simulate-image-to-waveform-latent"
     )
     logger.info(f"process_thought_to_image_index: {process_thought_to_image_index}")
 
     try:
         async with websockets.connect(
-            settings.ROOT_URI + "/simulate/ws/simulate-image-to-waveform-latent"
+            settings.HTTPS_ROOT_URI + "/simulate/ws/simulate-image-to-waveform-latent"
         ) as websocket:
             await websocket.send(json.dumps(message))
             response = await websocket.recv()
@@ -134,14 +134,14 @@ async def test_pipeline(payload: SimulationRequest):
         "payload": payload.json(),
     }
     logger.info(
-        f"settings.ROOT_URI + /simulate/ws/test: {settings.ROOT_URI}"
+        f"settings.WS_ROOT_URI + /simulate/ws/test: {settings.WS_ROOT_URI}"
         + "/simulate/ws/test"
     )
     logger.info(f"simulation_image_index: {simulation_image_index_test_full_pipeline}")
 
     try:
         async with websockets.connect(
-            settings.ROOT_URI + "/simulate/ws/test"
+            settings.WS_ROOT_URI + "/simulate/ws/test"
         ) as websocket:
             await websocket.send(json.dumps(message))
             response = await websocket.recv()

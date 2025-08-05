@@ -41,7 +41,7 @@ async def send_image(session_id: str, image: Image.Image):
     }
     try:
         async with websockets.connect(
-            settings.ROOT_URI + "/simulate/ws/simulate-image-to-waveform-latent"
+            settings.WS_ROOT_URI + "/simulate/ws/simulate-image-to-waveform-latent"
         ) as websocket:
             await websocket.send(json.dumps(payload))
             response = await websocket.recv()

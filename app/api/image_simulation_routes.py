@@ -76,7 +76,7 @@ async def simulate(websocket: WebSocket):
 
             # Forward pipeline
             async with websockets.connect(
-                settings.ROOT_URI
+                settings.WS_ROOT_URI
                 + "/reconstruct/ws/reconstruct-image-from-waveform-latent"
             ) as relay_ws:
                 await relay_ws.send(json.dumps(message))
@@ -106,14 +106,14 @@ async def simulate(websocket: WebSocket):
             if request.get("type") == "test":
                 logger.info(f"[ImageSimulation] Received test payload: {request}")
                 logger.info(
-                    f"settings.ROOT_URI + /reconstruct/ws/test: {settings.ROOT_URI}"
+                    f"settings.WS_ROOT_URI + /reconstruct/ws/test: {settings.WS_ROOT_URI}"
                     + "/reconstruct/ws/test"
                 )
                 logger.info(f"json.dumps(request): {json.dumps(request)}")
                 # Forward to the relay WebSocket
                 try:
                     async with websockets.connect(
-                        settings.ROOT_URI + "/reconstruct/ws/test"
+                        settings.WS_ROOT_URI + "/reconstruct/ws/test"
                     ) as relay_ws:
                         await relay_ws.send(json.dumps(request))
                         relay_response = await relay_ws.recv()

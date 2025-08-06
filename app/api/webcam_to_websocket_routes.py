@@ -22,8 +22,8 @@ import uvicorn
 from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
 from fastapi.responses import Response
 from fastapi import Request
-from core.logging import logger
-from core.config import settings
+from app.core.logging import logger
+from app.core.config import settings
 
 from contextlib import asynccontextmanager
 
@@ -33,8 +33,8 @@ from PIL import Image
 from io import BytesIO
 import base64
 
-from models.SimulationRequest import SimulationRequest
-from service.webcam_to_websocket_service import (
+from app.models.SimulationRequest import SimulationRequest
+from app.service.webcam_to_websocket_service import (
     encode_image_to_base64,
     pil_image_to_base64,
     send_image,

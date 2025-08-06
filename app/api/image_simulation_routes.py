@@ -2,17 +2,17 @@
 
 from fastapi import APIRouter
 from fastapi import WebSocket, WebSocketDisconnect
-from core.monitoring import metrics
-from core.config import settings
-from core.logging import logger
+from app.core.monitoring import metrics
+from app.core.config import settings
+from app.core.logging import logger
 import json
 import io
 import torch
 import websockets
 
-from core.config import settings
+from app.core.config import settings
 
-from service.transform import (
+from app.service.transform import (
     preprocess_image_from_websocket,
     transform_image_to_waveform_latents,
     compress_skip_connections,

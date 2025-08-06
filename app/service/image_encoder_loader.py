@@ -1,10 +1,10 @@
 # models/loader.py
 import torch
 from torchvision import transforms
-from app.models.image_encoder import ImageEncoder
-from app.models.waveform_decoder import WaveformDecoder
-from app.models.waveform_encoder import WaveformEncoder
-from app.core.config import settings
+from models.image_encoder import ImageEncoder
+from models.waveform_decoder import WaveformDecoder
+from models.waveform_encoder import WaveformEncoder
+from core.config import settings
 
 
 def load_models():

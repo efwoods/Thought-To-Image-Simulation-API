@@ -1,11 +1,11 @@
 import os
 import re
 import requests
-from app.core.config import settings
+from core.config import settings
 import pickle
 from torchvision import transforms
 
-from app.data.dataset import ImageWaveformDataset
+from data.dataset import ImageWaveformDataset
 
 wavform_dict = None
 image_paths = None

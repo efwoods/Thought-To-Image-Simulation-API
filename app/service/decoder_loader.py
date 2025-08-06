@@ -1,8 +1,8 @@
 # models/loader.py
 import torch
 from torchvision import transforms
-from app.models.image_decoder import ImageDecoder
-from app.core.config import settings
+from models.image_decoder import ImageDecoder
+from core.config import settings
 
 
 def load_models():

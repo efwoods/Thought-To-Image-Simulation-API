@@ -4,8 +4,8 @@ import json
 import base64
 from io import BytesIO
 from PIL import Image
-from app.service.decoder_loader import load_models, get_image_resize_transform
-from app.core.config import settings
+from service.decoder_loader import load_models, get_image_resize_transform
+from core.config import settings
 import zlib
 
 image_decoder = load_models()

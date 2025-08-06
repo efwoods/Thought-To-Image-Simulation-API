@@ -3,7 +3,7 @@ from typing import Dict, Set
 from fastapi import WebSocket
 import json
 import asyncio
-from app.core.logging import logger
+from core.logging import logger
 
 
 class WebSocketManager:

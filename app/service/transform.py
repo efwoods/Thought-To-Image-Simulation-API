@@ -4,14 +4,13 @@ import json
 import base64
 from io import BytesIO
 from PIL import Image
-from service.image_encoder_loader import load_models, get_image_resize_transform
-from core.config import settings
-from core.logging import logger
+from app.service.image_encoder_loader import load_models, get_image_resize_transform
+from app.core.config import settings
+from app.core.logging import logger
 import zlib
 
 image_encoder, waveform_decoder, waveform_encoder = load_models()
 image_resize_transform = get_image_resize_transform()
-
 
 # Load normalization stats
 import json

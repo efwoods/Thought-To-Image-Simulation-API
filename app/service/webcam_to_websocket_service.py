@@ -3,9 +3,9 @@ from io import BytesIO
 import base64
 import websockets
 import json
-from service.startup import test_indices, dataset
-from core.logging import logger
-from core.config import settings
+from app.service.startup import test_indices, dataset
+from app.core.logging import logger
+from app.core.config import settings
 
 
 # -----------------------------

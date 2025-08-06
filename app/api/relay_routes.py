@@ -1,9 +1,9 @@
 # api/relay_routes.py
 
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
-from app.core.monitoring import metrics
-from app.core.config import settings
-from app.core.logging import logger
+from core.monitoring import metrics
+from core.config import settings
+from core.logging import logger
 import json
 import torch
 import base64
@@ -12,16 +12,16 @@ import websockets
 from torchvision import transforms
 from io import BytesIO
 
-from app.core.config import settings
-from app.core.monitoring import metrics
-from app.core.logging import logger
+from core.config import settings
+from core.monitoring import metrics
+from core.logging import logger
 import asyncio
 from PIL import Image
 import datetime
 
 from redis.asyncio import Redis  # requires `redis>=4.2.0`
 
-from app.service.reconstruct import (
+from service.reconstruct import (
     preprocess_image_from_websocket,
     reconstruct_image_from_waveform_latents,
     decode_and_decompress_tensor,
@@ -31,7 +31,7 @@ from app.service.reconstruct import (
 router = APIRouter()
 
 # api/relay_routes.py
-from app.service.websocket_manager import websocket_manager
+from service.websocket_manager import websocket_manager
 
 
 @router.websocket("/ws/frontend/{user_id}")

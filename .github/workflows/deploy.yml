@@ -53,8 +53,8 @@ jobs:
       - name: Deploy to Cloud Run
         run: |
           export IMAGE_BASE_NAME=${{env.IMAGE_BASE_NAME}}
-          export IMAGE_TAG: ${{ env.IMAGE_TAG }}
-          export FULL_IMAGE_NAME: ${{ env.FULL_IMAGE_NAME }}
+          export IMAGE_TAG=${{ env.IMAGE_TAG }}
+          export FULL_IMAGE_NAME=${{ env.FULL_IMAGE_NAME }}
           export SERVICE_NAME=${{ env.SERVICE_NAME }}
           export REGION=${{ env.REGION }}
               

@@ -64,4 +64,4 @@ jobs:
             --platform=managed \
             --allow-unauthenticated \
             --set-env-vars=IMAGE_DECODER_PATH="models/image_decoder.pt",RESIZED_IMAGE_SIZE=64,LATENT_DIM=128,REDIS_HOST=redis,REDIS_PORT=6379,REDIS_USERNAME=red-d25qupur433s73dvusdg,REDIS_PASSWORD=3f4c7d127bdbf8c0be1dbaa16b7d0875f0ea03f44f26d8d925b1e6ddbc9a78e,USE_PERCEPTUAL_LOSS=FALSE,NORMALIZATION_CONFIG="models/electrode_global_mean_std.json",IMAGE_ENCODER_PATH="models/image_encoder.pt",WAVEFORM_DECODER_PATH="models/waveform_decoder.pt",WAVEFORM_ENCODER_PATH="models/waveform_encoder.pt",WAVEFORM_DICT_PATH="data/collected_stimulus_waveforms.pkl",IMAGE_DICT_PATH="data/image_paths_dict.pkl",TEST_METADATA_PATH="data/test_dataset_metadata.pkl",API_URL="api.neuralnexus.site" \
-            --memory=1Gi
+            --memory=2Gi

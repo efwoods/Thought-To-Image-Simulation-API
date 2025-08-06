@@ -22,7 +22,7 @@ import uvicorn
 from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
 from fastapi.responses import Response
 from fastapi import Request
-from core.logging import logger
+from app.core.logging import logger
 
 from contextlib import asynccontextmanager
 
@@ -47,7 +47,7 @@ from torchvision import transforms
 from PIL import Image
 from io import BytesIO
 from dotenv import load_dotenv
-from core.config import settings
+from app.core.config import settings
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
@@ -60,9 +60,9 @@ from fastapi import Request
 from contextlib import asynccontextmanager
 
 # Configurations & Metrics
-from core.config import settings
-from core.monitoring import metrics
-from core.logging import logger
+from app.core.config import settings
+from app.core.monitoring import metrics
+from app.core.logging import logger
 
 # app/main.py
 import asyncio
@@ -75,7 +75,7 @@ from torchvision import transforms
 from PIL import Image
 from io import BytesIO
 from dotenv import load_dotenv
-from core.config import settings
+from app.core.config import settings
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
@@ -88,9 +88,9 @@ from fastapi import Request
 from contextlib import asynccontextmanager
 
 # Configurations & Metrics
-from core.config import settings
-from core.monitoring import metrics
-from core.logging import logger
+from app.core.config import settings
+from app.core.monitoring import metrics
+from app.core.logging import logger
 
 
 from redis.asyncio import Redis
@@ -103,11 +103,11 @@ from redis.asyncio import Redis
 # API Routes
 # from api.routes import router
 # API Routes
-from api.relay_routes import router as relay_router
-from api.image_simulation_routes import router as images_simulation_router
-from api.webcam_to_websocket_routes import router as webcam_to_websocket_router
+from app.api.relay_routes import router as relay_router
+from app.api.image_simulation_routes import router as images_simulation_router
+from app.api.webcam_to_websocket_routes import router as webcam_to_websocket_router
 
-from data.dataset import ImageWaveformDataset
+from app.data.dataset import ImageWaveformDataset
 
 
 # -----------------------------

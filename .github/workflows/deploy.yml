@@ -34,6 +34,8 @@ jobs:
           context: .
           push: true
           tags: docker.io/${{ env.IMAGE_NAME }}:latest
+          cache-from: type=registry,ref=docker.io/${{ env.IMAGE_NAME }}:buildcache
+          cache-to: type=registry,ref=docker.io/${{ env.IMAGE_NAME }}:buildcache,mode=max
 
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2

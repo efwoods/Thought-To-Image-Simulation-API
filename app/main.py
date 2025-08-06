@@ -91,7 +91,6 @@ from contextlib import asynccontextmanager
 from app.core.config import settings
 from app.core.monitoring import metrics
 from app.core.logging import logger
-from app.service.startup import fetch_ngrok_url
 
 
 from redis.asyncio import Redis

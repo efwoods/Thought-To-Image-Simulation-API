@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     REDIS_HOST: str
     REDIS_PORT: int
     REDIS_PASSWORD: str
+    REDIS_USERNAME: str
 
     # Torch
     DEVICE: str = "cuda" if torch.cuda.is_available() else "cpu"

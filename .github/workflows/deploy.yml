@@ -59,7 +59,7 @@ jobs:
           export REGION=${{ env.REGION }}
               
           gcloud run deploy $SERVICE_NAME \
-            --image=docker.io/$IMAGE_NAME:latest \
+            --image=docker.io/$IMAGE_NAME:$IMAGE_TAG \
             --region=$REGION \
             --platform=managed \
             --allow-unauthenticated \

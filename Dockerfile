@@ -1,34 +1,19 @@
-# Stage 1: Build
-FROM python:3.11-slim AS builder
-
-WORKDIR /app
-
-# Optional: reduce layer size
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update && apt-get install -y \
-    git ffmpeg libsndfile1-dev build-essential \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-COPY requirements.txt .
-RUN pip install --user --no-cache-dir -r requirements.txt
-
-COPY app/ .
-
-# Stage 2: Runtime image
 FROM python:3.11-slim
 
 WORKDIR /app
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && apt-get install -y \
-    ffmpeg libsndfile1 \
+    git ffmpeg libsndfile1-dev build-essential \
+    libsndfile1 \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-COPY --from=builder /root/.local /root/.local
-COPY /app ./
+COPY requirements.txt .
 
+# Install packages system-wide, no --user flag
+RUN pip install --no-cache-dir -r requirements.txt
 
-
-ENV PATH=/root/.local/bin:$PATH
+COPY app/ .
 
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]

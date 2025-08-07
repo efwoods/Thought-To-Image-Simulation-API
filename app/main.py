@@ -152,7 +152,7 @@ async def lifespan(app: FastAPI):
     )
 
     app.state.redis = redis_client  # make available globally
-    log_directory_structure()
+    await log_directory_structure()
     yield
     print("[Shutdown] Shutting down sender...")
 

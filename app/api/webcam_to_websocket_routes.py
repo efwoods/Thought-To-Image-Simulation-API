@@ -65,6 +65,12 @@ async def process_thought_to_image(payload: SimulationRequest):
     # Simulate Test Images
     global process_thought_to_image_index
     timestamp = datetime.datetime.utcnow().isoformat() + "Z"
+
+    logger.info(f"CWD: {os.getcwd()}")
+    logger.info(f"BASE_DIR: {BASE_DIR}")
+    logger.info(f"IMAGE_PATHS_FLAT_LIST: {IMAGE_PATHS_FLAT_LIST}")
+    logger.info(f"TEST_INDICES: {TEST_INDICES}")
+
     with open(IMAGE_PATHS_FLAT_LIST, "rb") as f:
         sample_stimulus_image_path_list = pickle.load(f)
 

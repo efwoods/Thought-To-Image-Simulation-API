@@ -7,8 +7,6 @@ env/
 *.egg-info/
 tests/
 .git/
-.dockerignore
-Dockerfile
 .vscode/
 *.log
 .env
@@ -17,4 +15,4 @@ Dockerfile
 docker-update.sh
 README.md
 LICENSE
-models/
+deploy.sh

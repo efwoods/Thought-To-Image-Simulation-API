@@ -24,8 +24,8 @@ RUN apt-get update && apt-get install -y \
     ffmpeg libsndfile1 \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-COPY --from=builder /root/.local /root/.local
-COPY --from=builder /app ./
+COPY /app ./
+
 
 RUN find . -type f
 

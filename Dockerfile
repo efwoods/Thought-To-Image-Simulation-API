@@ -27,6 +27,8 @@ RUN apt-get update && apt-get install -y \
 COPY --from=builder /root/.local /root/.local
 COPY --from=builder /app ./
 
+RUN find . -type f
+
 ENV PATH=/root/.local/bin:$PATH
 
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]

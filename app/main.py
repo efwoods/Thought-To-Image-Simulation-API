@@ -110,6 +110,18 @@ from api.webcam_to_websocket_routes import router as webcam_to_websocket_router
 from data.dataset import ImageWaveformDataset
 
 
+async def log_directory_structure():
+    root_dir = "/app"  # This is your WORKDIR
+    logger.info("[Startup] FastAPI simulation sender is live")
+
+    for dirpath, dirnames, filenames in os.walk(root_dir):
+        level = dirpath.replace(root_dir, "").count(os.sep)
+        indent = "  " * level
+        logger.info(f"{indent}{os.path.basename(dirpath)}/")
+        for f in filenames:
+            logger.info(f"{indent}  {f}")
+
+
 # -----------------------------
 # FastAPI App
 # -----------------------------
@@ -140,7 +152,7 @@ async def lifespan(app: FastAPI):
     )
 
     app.state.redis = redis_client  # make available globally
-
+    log_directory_structure()
     yield
     print("[Shutdown] Shutting down sender...")
 

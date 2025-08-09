@@ -11,17 +11,10 @@ RUN apt-get update && apt-get install -y \
 
 COPY requirements.txt .
 
+# Install packages system-wide, no --user flag
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app/ .
-COPY app/data/*.pkl ./data/
-
-RUN if [ -d /app/data ]; then \
-      echo "/app/data directory exists."; \
-      echo "Listing .pkl files in /app/data:"; \
-      ls -l /app/data/*.pkl; \
-    else \
-      echo "ERROR: /app/data directory does NOT exist!"; \
-    fi
+COPY app/data/* ./data/
 
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]

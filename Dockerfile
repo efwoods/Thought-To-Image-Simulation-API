@@ -15,7 +15,8 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app/ .
-COPY app/data/* ./data/
+# COPY app/data/* ./data/
+
 
 RUN if [ -d /app/data ]; then \
       echo "/app/data directory exists."; \
@@ -23,6 +24,16 @@ RUN if [ -d /app/data ]; then \
       ls -l /app/data/*.pkl || echo "No .pkl files found"; \
     else \
       echo "ERROR: /app/data directory does NOT exist!"; \
+      exit 1; \
+    fi
+
+
+RUN if [ -d /app/models ]; then \
+      echo "/app/models directory exists."; \
+      echo "Listing .pkl files in /app/models:"; \
+      ls -l /app/models/*.pkl || echo "No .pkl files found"; \
+    else \
+      echo "ERROR: /app/models directory does NOT exist!"; \
       exit 1; \
     fi
 

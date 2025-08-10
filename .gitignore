@@ -1,4 +1,6 @@
-*.pkl
+**image_paths_dict.pkl
+**collected_stimulus_waveforms.pkl
+
 functional-test-images
 *.ipynb
 

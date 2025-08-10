@@ -93,13 +93,13 @@ async def process_thought_to_image(payload: SimulationRequest):
         },
     }
     logger.info(
-        f"settings.HTTPS_ROOT_URI + /simulate/ws/simulate-image-to-waveform-latent: {settings.HTTPS_ROOT_URI}"
+        f"settings.WS_ROOT_URI + /simulate/ws/simulate-image-to-waveform-latent: {settings.WS_ROOT_URI}"
         + "/simulate/ws/simulate-image-to-waveform-latent"
     )
 
     try:
         async with websockets.connect(
-            settings.HTTPS_ROOT_URI + "/simulate/ws/simulate-image-to-waveform-latent"
+            settings.WS_ROOT_URI + "/simulate/ws/simulate-image-to-waveform-latent"
         ) as websocket:
             await websocket.send(json.dumps(message))
             response = await websocket.recv()
